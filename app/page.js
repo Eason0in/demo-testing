@@ -1,6 +1,8 @@
 'use client'
 import { useState } from 'react'
 import styles from './page.module.css'
+import InputAndBtn from './inputAndBtn'
+import List from './list'
 
 const inputInit = ''
 
@@ -32,27 +34,16 @@ export default function Home() {
     setInputTxt(inputInit)
   }
 
+  const handleInputTxtChange = (e) => setInputTxt(e.target.value)
+
   return (
     <main className={styles.main}>
       <div className={styles.container}>
         <h1>ToDo List</h1>
-        <div className={styles.left}>
-          <input className={styles.input} type="text" value={inputTxt} onChange={(e) => setInputTxt(e.target.value)} />
-          <button className={styles.btn} onClick={handleItemSave}>
-            儲存
-          </button>
-        </div>
 
-        <ul className={styles.right}>
-          {list.map(({ id, content }, index) => (
-            <li key={id} className={styles.li}>
-              <p className={styles.content}>{content}</p>
-              <button className={styles.removeBtn} onClick={() => handleItemDelete(index)}>
-                X
-              </button>
-            </li>
-          ))}
-        </ul>
+        <InputAndBtn inputTxt={inputTxt} handleItemSave={handleItemSave} handleInputTxtChange={handleInputTxtChange} />
+
+        <List list={list} handleItemDelete={handleItemDelete} />
       </div>
     </main>
   )
