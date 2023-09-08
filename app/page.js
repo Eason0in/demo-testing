@@ -39,7 +39,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.container}>
-        <h1>ToDo List</h1>
+        <h1 data-test="todo-list">ToDo List</h1>
 
         <InputAndBtn inputTxt={inputTxt} handleItemSave={handleItemSave} handleInputTxtChange={handleInputTxtChange} />
 
