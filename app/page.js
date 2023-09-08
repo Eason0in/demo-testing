@@ -9,12 +9,20 @@ const inputInit = ''
 export default function Home() {
   const [inputTxt, setInputTxt] = useState(inputInit)
   const [list, setList] = useState([
-    { id: 1, content: 'abc' },
-    { id: 2, content: 'bbb' },
+    { id: 1, content: 'do the laundry' },
+    { id: 2, content: 'wash dishes' },
   ])
 
   const handleItemSave = () => {
     if (inputTxt.trim() === '') return
+
+    const tasks = list.map(({content})=>content)
+    if (tasks.find((task) => task === inputTxt)) {
+      window.alert('You have already added the same task')
+      setInputTxt('')
+      return
+    }
+
     setList((last) => {
       const { id } = last[last.length - 1] || {}
       const lastId = id + 1 || 1
@@ -28,7 +36,7 @@ export default function Home() {
   const handleItemDelete = (index) => {
     setList((last) => {
       const tempLast = Array.from(last)
-      const newList = tempLast.splice(index, 1)
+      tempLast.splice(index, 1)
       return tempLast
     })
     setInputTxt(inputInit)
