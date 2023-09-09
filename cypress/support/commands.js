@@ -23,3 +23,12 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('addTask', (task) => {
+  cy.get('input').type(task)
+  cy.contains('儲存').click()
+})
+
+Cypress.Commands.add('deleteTask', (task) => {
+  cy.contains(task).next().click()
+})

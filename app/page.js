@@ -16,7 +16,7 @@ export default function Home() {
   const handleItemSave = () => {
     if (inputTxt.trim() === '') return
 
-    const tasks = list.map(({content})=>content)
+    const tasks = list.map(({ content }) => content)
     if (tasks.find((task) => task === inputTxt)) {
       window.alert('You have already added the same task')
       setInputTxt('')
@@ -47,7 +47,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.container}>
-        <h1 data-test="todo-list">ToDo List</h1>
+        <h1>ToDo List</h1>
 
         <InputAndBtn inputTxt={inputTxt} handleItemSave={handleItemSave} handleInputTxtChange={handleInputTxtChange} />
 
